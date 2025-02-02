@@ -15,12 +15,24 @@ public class BookController {
     public BookController(BookRepo bookRepository) {
         this.bookRepository = bookRepository;
     }
-@GetMapping
-    public String listBooks(Model model){
-        List<Book> books=bookRepository.findAll();
+//@GetMapping
+//    public String listBooks(Model model){
+//        List<Book> books=bookRepository.findAll();
+//        model.addAttribute("books",books);
+//        return "books";
+//}
+
+    @GetMapping
+    public String listBooks(@RequestParam(required = false) String category,Model model
+    ){
+        List<Book> books;
+        if(category!=null && !category.isEmpty()){
+            books=bookRepository.findByCategory(category);
+
+        }else books=bookRepository.findAll();
         model.addAttribute("books",books);
         return "books";
-}
+    }
     @PostMapping("/add")
     public String addBook(@ModelAttribute Book book){
         bookRepository.save(book);

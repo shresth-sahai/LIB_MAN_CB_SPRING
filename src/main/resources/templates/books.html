@@ -1,23 +1,69 @@
- <!DOCTYPE html>
- <html>
- <head>
-     <title> Library Books</title>
-     <link rel="stylesheet" href="/styles.css">
- </head>
- <body>
- <h1> Library Books</h1>
+<!-- <!DOCTYPE html>-->
+<!-- <html>-->
+<!-- <head>-->
+<!--     <title> Library Books</title>-->
+<!--     <link rel="stylesheet" href="/styles.css">-->
+<!-- </head>-->
+<!-- <body>-->
+<!-- <h1> Library Books</h1>-->
 
+<!-- <form action="/books/add" method="post">-->
+<!--     <input type="text" name="title" placeholder="Title" required>-->
+<!--     <input type="text" name="author" placeholder="Author" required>-->
+<!--     <button type="submit">Add Book</button>-->
+<!-- </form>-->
+<!-- <ul>-->
+<!--     <li th:each="book:${books}">-->
+<!--         <span th:text="${book.title} + 'by' + ${book.author} "></span>-->
+<!--     </li>-->
+<!-- </ul>-->
+<!-- </body>-->
+<!-- </html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title> BOOKS </title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1> Library Books</h1>
+<form action="/books" method="get">
+    <label for="category"> Filter By Category:</label>
+    <select name="category" id="category">
+        <option value="">All</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Scifi">Scifi</option>
+        <option value="Mystery">Mystry</option>
+
+    </select>
+    <button type="submit" > Filter</button>
+</form>
+
+<!-- Add book -->
  <form action="/books/add" method="post">
      <input type="text" name="title" placeholder="Title" required>
      <input type="text" name="author" placeholder="Author" required>
+
+     <select name="category">
+
+         <option value="Fiction">Fiction</option>
+         <option value="Non-Fiction">Non-Fiction</option>
+         <option value="Scifi">Scifi</option>
+         <option value="Mystery">Mystry</option>
+
+     </select>
      <button type="submit">Add Book</button>
  </form>
+
+
  <ul>
      <li th:each="book:${books}">
-         <span th:text="${book.title} + 'by' + ${book.author} "></span>
+         <span th:text="${book.title} + 'by' + ${book.author} + '('+${book.category} + ')'"></span>
      </li>
  </ul>
- </body>
- </html>
 
+</body>
+
+</html>
 

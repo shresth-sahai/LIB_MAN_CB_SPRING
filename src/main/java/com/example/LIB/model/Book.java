@@ -8,16 +8,25 @@ public class Book {
     @Id
     private String id;
     private String title;
-    private String author; private boolean available=true;
+    private String author; private String category;
+    private boolean available=true;
 
     public Book(){
 
     }
-    public Book(String id, String title, String author, boolean available) {
+    public Book(String id, String title, String author,String category, boolean available) {
         this.id = id;
         this.title = title;
-        this.author = author;
+        this.author = author; this.category=category;
         this.available = available;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getId() {
